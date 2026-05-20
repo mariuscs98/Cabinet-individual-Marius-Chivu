@@ -1040,8 +1040,14 @@
       a.addEventListener('click', () => navMobile.classList.remove('open'));
     });
 
+    
+ (function() {
+    emailjs.init("PUBLIC_KEY_UL_TAU"); // <- de la EmailJS
+  })();
+
+
     // Form
-    function handleSubmit(e) {
+    /*function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
       btn.textContent = 'Se trimite...';
@@ -1050,7 +1056,33 @@
         btn.style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
       }, 1200);
-    }
+    }*/
+
+    
+    function handleSubmit(event) {
+  event.preventDefault();
+
+  const form = event.target;
+
+  const data = {
+    nume: form.nume.value,
+    email: form.email.value,
+    telefon: form.telefon.value,
+    mesaj: form.mesaj.value
+  };
+
+  emailjs.send("SERVICE_ID", "TEMPLATE_ID", data)
+    .then(function(response) {
+      console.log("SUCCESS!", response.status, response.text);
+
+      document.getElementById("form-success").style.display = "block";
+      form.reset();
+    }, function(error) {
+      console.log("FAILED...", error);
+      alert("A apărut o eroare. Încearcă din nou.");
+    });
+}
+
 
     // Smooth anchor offset for sticky nav
     document.querySelectorAll('a[href^="#"]').forEach(a => {
