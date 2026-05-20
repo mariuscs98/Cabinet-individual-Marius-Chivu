@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psiholog Clinician · București</title>
+  <meta name="description" content="Cabinet de psihologie clinică și psihoterapie. Adulți, cupluri, copii și adolescenți. București și online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --espresso:   #2c2018;
+      --espresso-d: #1e1510;
+      --amber:      #7a5c3a;
+      --amber-l:    #c4a882;
+      --sage:       #5a7a50;
+      --sage-l:     #a0b890;
+      --sage-pale:  #e4edd8;
+      --rose:       #b87870;
+      --rose-pale:  #f5e8e6;
+      --warm-pale:  #ede5da;
+      --bg:         #f8f5f1;
+      --bg-off:     #fdfaf7;
+      --border:     #e4dbd0;
+      --border-l:   #ddd6cc;
+      --text-dark:  #2c2018;
+      --text-mid:   #6b5848;
+      --text-muted: #9a8a78;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── UTILITIES ── */
+    .serif { font-family: var(--serif); }
+    .tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248, 245, 241, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      height: 62px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--espresso);
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--espresso); }
+    .nav-cta {
+      background: var(--sage) !important;
+      color: var(--bg) !important;
+      font-size: 12px !important;
+      padding: 9px 20px;
+      border-radius: 24px;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: #4a6840 !important; transform: translateY(-1px); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--espresso);
+      transition: all 0.3s;
+    }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      padding: 8px 0 16px;
+    }
+    .nav-mobile a {
+      padding: 12px 24px;
+      font-size: 14px;
+      color: var(--text-mid);
+      border-bottom: 0.5px solid var(--border-l);
+    }
+    .nav-mobile .nav-cta {
+      margin: 12px 24px 0;
+      text-align: center;
+      padding: 12px !important;
+      border-radius: 24px;
+      font-size: 13px !important;
+    }
+    .nav-mobile.open { display: flex; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-inner { padding: 0 24px; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      min-height: calc(100vh - 62px);
+      max-height: 860px;
+      overflow: hidden;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 56px 64px 48px;
+      animation: fadeUp 0.9s ease both;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--sage);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--sage-l);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 58px);
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 420px;
+      margin-bottom: 32px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--sage);
+      color: var(--bg);
+      font-size: 13px;
+      padding: 13px 26px;
+      border-radius: 28px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #4a6840; transform: translateY(-1px); }
+    .btn-ghost {
+      font-size: 13px;
+      color: var(--amber);
+      border-bottom: 1px solid var(--amber-l);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--espresso); border-color: var(--espresso); }
+    .hero-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 14px;
+    }
+    .chip-sage { background: rgba(90,122,80,0.1); color: #3d5e34; }
+    .chip-rose { background: rgba(184,120,112,0.12); color: #8c4a42; }
+    .chip-amber { background: rgba(122,92,58,0.1); color: #6b4e2c; }
+
+    .hero-image {
+      background: #dde5d8;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.1s ease both;
+    }
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-figure {
+      width: 200px;
+      height: 380px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 100px 100px 30px 30px;
+      margin-bottom: 0;
+    }
+    .hero-image-label {
+      position: absolute;
+      bottom: 32px;
+      left: 28px;
+      background: rgba(248,245,241,0.9);
+      backdrop-filter: blur(8px);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+    .hero-image-label strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--espresso);
+    }
+    .hero-image-label span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        max-height: none;
+      }
+      .hero-image { height: 280px; order: -1; }
+      .hero-content { padding: 40px 24px; }
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--bg-off);
+      border-top: 0.5px solid var(--border);
+      padding: 96px 0;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #dde5d8;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 60%;
+      height: 60%;
+      border: 1.5px solid var(--sage-l);
+      border-radius: 0 0 20px 0;
+      pointer-events: none;
+    }
+    .about h2 {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .about-text {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .about-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .badge {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+    .badge-sage { background: var(--sage-pale); color: #3d5e34; }
+    .badge-amber { background: var(--warm-pale); color: #6b4e2c; }
+
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      .about-photo { max-width: 220px; }
+      .about h2 { font-size: 32px; }
+    }
+
+    /* ── QUOTE BAND ── */
+    .quote-band {
+      background: var(--espresso);
+      padding: 72px 48px;
+      text-align: center;
+    }
+    .quote-band blockquote {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 30px);
+      font-style: italic;
+      color: #f0e8dc;
+      line-height: 1.5;
+      max-width: 680px;
+      margin: 0 auto 14px;
+    }
+    .quote-band cite {
+      font-size: 12px;
+      color: rgba(240,232,220,0.45);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 96px 0;
+      border-top: 0.5px solid var(--border);
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.1;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .service-card {
+      background: var(--bg-off);
+      border: 0.5px solid var(--border-l);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--amber-l);
+    }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--espresso);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .service-link {
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid currentColor;
+      transition: gap 0.2s;
+    }
+    .service-link:hover { gap: 8px; }
+    .link-sage { color: var(--sage); }
+    .link-rose { color: var(--rose); }
+    .link-amber { color: var(--amber); }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      background: var(--bg-off);
+      border-top: 0.5px solid var(--border);
+      padding: 96px 0;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 48px;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: calc(12.5% + 16px);
+      right: calc(12.5% + 16px);
+      height: 1px;
+      background: var(--sage-pale);
+    }
+    .step {
+      padding: 0 20px;
+      position: relative;
+    }
+    .step:first-child { padding-left: 0; }
+    .step:last-child { padding-right: 0; }
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .step h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--espresso);
+      margin-bottom: 8px;
+    }
+    .step p {
+      font-size: 12px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .steps-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .steps-grid::before { display: none; }
+    }
+    @media (max-width: 480px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── BLOG ── */
+    .blog {
+      padding: 96px 0;
+      border-top: 0.5px solid var(--border);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .blog-card {
+      background: var(--bg-off);
+      border: 0.5px solid var(--border-l);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .blog-card:hover { transform: translateY(-3px); }
+    .blog-card-img {
+      width: 100%;
+      height: 140px;
+    }
+    .blog-card-body { padding: 20px 22px 24px; }
+    .blog-tag {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .blog-card h3 {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .blog-card p {
+      font-size: 12px;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+    .blog-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 14px;
+    }
+    .see-all {
+      font-size: 13px;
+      color: var(--amber);
+      border-bottom: 1px solid var(--amber-l);
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--espresso);
+      padding: 96px 0;
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact h2 {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 500;
+      color: #f0e8dc;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .contact-sub {
+      font-size: 14px;
+      color: rgba(240,232,220,0.55);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 380px;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.07);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+    .contact-item-label {
+      font-size: 11px;
+      color: rgba(240,232,220,0.4);
+      margin-bottom: 2px;
+    }
+    .contact-item-value {
+      font-size: 13px;
+      color: #f0e8dc;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 13px;
+      font-family: var(--sans);
+      color: #f0e8dc;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(240,232,220,0.35);
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.09);
+    }
+    .contact-form textarea {
+      height: 100px;
+      resize: none;
+    }
+    .contact-form button {
+      background: var(--sage);
+      color: var(--bg);
+      border: none;
+      border-radius: 28px;
+      padding: 14px;
+      font-size: 13px;
+      font-family: var(--sans);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 4px;
+    }
+    .contact-form button:hover {
+      background: #4a6840;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact h2 { font-size: 32px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--espresso-d);
+      padding: 24px 0;
+      border-top: 0.5px solid rgba(255,255,255,0.05);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(248,245,241,0.3);
+      line-height: 1.6;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      font-size: 11px;
+      color: rgba(248,245,241,0.25);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(248,245,241,0.5); }
+
+    @media (max-width: 480px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .quote-band { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Marius Sebastian Chivu</a>
+      <div class="nav-links">
+        <a href="#despre">Despre mine</a>
+        <a href="#servicii">Servicii</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Programează o consultație</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger" aria-label="Meniu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#despre">Despre mine</a>
+      <a href="#servicii">Servicii</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Programează o consultație</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Psiholog clinician · Timișoara</div>
+      <h1>Un spațiu sigur<br>pentru a te <em>înțelege</em></h1>
+      <p class="hero-lead">
+        Lucrez cu adulți, adolescenți și cupluri pentru a găsi echilibru,
+        claritate și vindecare în momentele grele.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Programează o consultație</a>
+        <a href="#despre" class="btn-ghost">Află mai multe →</a>
+      </div>
+      <div class="hero-chips">
+        <span class="chip chip-sage">Anxietate</span>
+        <span class="chip chip-sage">Depresie & stres</span>
+        <span class="chip chip-rose">Consiliere</span>
+        <span class="chip chip-amber">Copii & adolescenți</span>
+      </div>
+    </div>
+    <div class="hero-image" aria-hidden="true">
+      <div class="hero-image-placeholder">
+        <div class="hero-figure"></div>
+        <!-- Înlocuiește cu: <img src="poza-ta.jpg" alt="[Prenume], psiholog clinician" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"> -->
+      </div>
+      <div class="hero-image-label">
+        <strong>Marius Sebastian Chivu</strong>
+        <span>Psiholog clinician și psihoterapeut integrativ în formare</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="despre">
+    <div class="container">
+      <div class="about-inner reveal">
+        <div class="about-photo" aria-hidden="true">
+          <!-- Înlocuiește cu: <img src="poza-about.jpg" alt="[Prenume] în cabinet" style="width:100%;height:100%;object-fit:cover;"> -->
+        </div>
+        <div class="about-content">
+          <span class="tag">despre mine</span>
+          <h2 class="serif">Bună, sunt [Prenume].<br>Mă bucur că ești aici.</h2>
+          <p class="about-text">
+            Cred că fiecare om poartă în el resursele de care are nevoie.
+            Rolul meu e să te ajut să le descoperi — cu curiozitate, răbdare și fără judecată.
+          </p>
+          <p class="about-text">
+            Lucrez din convingerea că a cere ajutor e un act de curaj, nu de slăbiciune.
+            Indiferent de ce te-a adus aici, ești binevenit/ă exact cum ești.
+          </p>
+          <div class="about-badges">
+            <span class="badge badge-sage">Psiholog clinician atestat</span>
+            <span class="badge badge-sage">Psihoterapeut</span>
+            <span class="badge badge-amber">Supervizat CBT</span>
+            <span class="badge badge-amber">Membru CPR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QUOTE ── -->
+  <div class="quote-band">
+    <blockquote>
+      „Terapia nu e despre a deveni altcineva.<br>
+      E despre a te întâlni cu adevărat pe tine."
+    </blockquote>
+    <cite>— [Prenume Nume], psiholog clinician</cite>
+  </div>
+
+  <!-- ── SERVICES ── -->
+  <section class="services" id="servicii">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <span class="tag">servicii</span>
+          <h2 class="section-title serif">Cum te pot ajuta</h2>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon" style="background: var(--sage-pale);">🌿</div>
+          <h3 class="serif">Terapie individuală</h3>
+          <p>
+            Anxietate, depresie, burnout, stres, relații dificile, traume,
+            dezvoltare personală. Lucrăm în ritmul tău, fără presiune.
+          </p>
+          <a href="#contact" class="service-link link-sage">Programează o ședință →</a>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon" style="background: var(--rose-pale);">🌸</div>
+          <h3 class="serif">Terapie de cuplu</h3>
+          <p>
+            Comunicare blocată, conflicte repetate, criză de relație,
+            reconectare emoțională. Lucrăm împreună, cu respect pentru ambii.
+          </p>
+          <a href="#contact" class="service-link link-rose">Programează o ședință →</a>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon" style="background: var(--warm-pale);">🦋</div>
+          <h3 class="serif">Copii & adolescenți</h3>
+          <p>
+            Anxietate școlară, emoții dificile, comportamente, tranzițiile
+            adolescenței. Cu implicarea familiei când e necesar.
+          </p>
+          <a href="#contact" class="service-link link-amber">Programează o ședință →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how">
+    <div class="container">
+      <span class="tag reveal">cum funcționează</span>
+      <h2 class="section-title serif reveal">Primul pas e simplu</h2>
+      <div class="steps-grid">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Mă contactezi</h3>
+          <p>Telefon, email sau formularul de pe site. Răspund în maximum 24 de ore.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <h3>Ședință de evaluare</h3>
+          <p>Ne cunoaștem, discutăm ce te-a adus și stabilim obiectivele împreună.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <h3>Ședințe regulate</h3>
+          <p>50 de minute, față în față sau online, la un ritm potrivit ție.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <h3>Progres real</h3>
+          <p>Evaluăm periodic și adaptăm procesul în funcție de nevoile tale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOG ── -->
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <span class="tag">articole</span>
+          <h2 class="section-title serif">Din blogul meu</h2>
+        </div>
+        <a href="#blog" class="see-all">Vezi toate articolele →</a>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card reveal">
+          <div class="blog-card-img" style="background: #dde5d8;"></div>
+          <div class="blog-card-body">
+            <span class="blog-tag" style="color: var(--sage);">Anxietate</span>
+            <h3>Cum recunoști anxietatea ascunsă și ce poți face cu ea</h3>
+            <p>Uneori anxietatea nu arată cum ne așteptăm. Iată câteva semne mai puțin cunoscute și cum să le abordezi.</p>
+            <div class="blog-meta">5 min citire · 12 mai 2025</div>
+          </div>
+        </article>
+        <article class="blog-card reveal">
+          <div class="blog-card-img" style="background: var(--rose-pale);"></div>
+          <div class="blog-card-body">
+            <span class="blog-tag" style="color: var(--rose);">Relații</span>
+            <h3>Cearta sănătoasă vs. conflictul toxic — care e diferența?</h3>
+            <p>Nu toate conflictele sunt distructive. Uneori, a te certa bine e un semn de sănătate în relație.</p>
+            <div class="blog-meta">4 min citire · 3 mai 2025</div>
+          </div>
+        </article>
+        <article class="blog-card reveal">
+          <div class="blog-card-img" style="background: var(--warm-pale);"></div>
+          <div class="blog-card-body">
+            <span class="blog-tag" style="color: var(--amber);">Copii</span>
+            <h3>Când îngrijorarea unui copil devine anxietate — semne de urmărit</h3>
+            <p>Cum distingem frica normală de dezvoltare de anxietatea care necesită sprijin profesional.</p>
+            <div class="blog-meta">6 min citire · 24 apr 2025</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="reveal">
+          <span class="tag" style="color: rgba(240,232,220,0.4);">contact</span>
+          <h2>Să vorbim</h2>
+          <p class="contact-sub">
+            Primul pas poate fi și un mesaj scurt. Nu trebuie să știi exact
+            ce vrei să spui — suntem aici să găsim asta împreună.
+          </p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-item-label">Telefon</div>
+                <div class="contact-item-value">+40 7xx xxx xxx</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value">contact@numeletal.ro</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-item-label">Cabinet</div>
+                <div class="contact-item-value">București · și online</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+          <input type="text" name="nume" placeholder="Nume și prenume" required autocomplete="name">
+          <input type="email" name="email" placeholder="Email" required autocomplete="email">
+          <input type="tel" name="telefon" placeholder="Telefon (opțional)" autocomplete="tel">
+          <textarea name="mesaj" placeholder="Mesaj scurt (opțional)"></textarea>
+          <button type="submit">Trimite mesaj</button>
+          <p id="form-success" style="display:none; font-size:12px; color: rgba(164,208,148,0.9); text-align:center; margin-top:4px;">
+            Mulțumesc! Te voi contacta în curând. 🌿
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">
+        © 2025 [Numele Tău] · Psiholog clinician atestat CPR<br>
+        Colegiul Psihologilor din România
+      </div>
+      <div class="footer-links">
+        <a href="#">Politică de confidențialitate</a>
+        <a href="#">Termeni și condiții</a>
+        <a href="#">GDPR</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => {
+      navMobile.classList.toggle('open');
+    });
+    navMobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navMobile.classList.remove('open'));
+    });
+
+    // Form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Se trimite...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      }, 1200);
+    }
+
+    // Smooth anchor offset for sticky nav
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 70;
+          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
