@@ -530,13 +530,13 @@
 
     @media (max-width: 768px) {
       .steps-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
+        grid-template-columns: 1fr;
+        gap: 28px;
       }
       .steps-grid::before { display: none; }
-    }
-    @media (max-width: 480px) {
-      .steps-grid { grid-template-columns: 1fr; }
+      .step { padding: 0; }
+      .step:first-child { padding-left: 0; }
+      .step:last-child { padding-right: 0; }
     }
 
     /* ── BLOG ── */
@@ -749,7 +749,7 @@
   <!-- ── NAVIGATION ── -->
   <nav>
     <div class="nav-inner">
-      <a href="#" class="nav-logo">Marius Sebastian Chivu</a>
+      <a href="#" class="nav-logo">Numele Tău</a>
       <div class="nav-links">
         <a href="#despre">Despre mine</a>
         <a href="#servicii">Servicii</a>
@@ -773,10 +773,10 @@
   <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-content">
-      <div class="hero-eyebrow">Psiholog clinician · Timișoara</div>
+      <div class="hero-eyebrow">Psiholog clinician · București</div>
       <h1>Un spațiu sigur<br>pentru a te <em>înțelege</em></h1>
       <p class="hero-lead">
-        Lucrez cu adulți, adolescenți și cupluri pentru a găsi echilibru,
+        Lucrez cu adulți, cupluri și copii pentru a găsi echilibru,
         claritate și vindecare în momentele grele.
       </p>
       <div class="hero-actions">
@@ -786,7 +786,7 @@
       <div class="hero-chips">
         <span class="chip chip-sage">Anxietate</span>
         <span class="chip chip-sage">Depresie & stres</span>
-        <span class="chip chip-rose">Consiliere</span>
+        <span class="chip chip-rose">Terapie de cuplu</span>
         <span class="chip chip-amber">Copii & adolescenți</span>
       </div>
     </div>
@@ -796,8 +796,8 @@
         <!-- Înlocuiește cu: <img src="poza-ta.jpg" alt="[Prenume], psiholog clinician" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"> -->
       </div>
       <div class="hero-image-label">
-        <strong>Marius Sebastian Chivu</strong>
-        <span>Psiholog clinician și psihoterapeut integrativ în formare</span>
+        <strong>[Prenume Nume]</strong>
+        <span>Psiholog clinician atestat</span>
       </div>
     </div>
   </section>
