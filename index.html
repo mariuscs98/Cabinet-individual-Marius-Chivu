@@ -33,8 +33,9 @@
 
     /* NAV */
     nav { position: sticky; top: 0; z-index: 100; background: rgba(248,245,241,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); height: 62px; }
-    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--espresso); }
+    .nav-inner { width: 100%; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--espresso); display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a { font-size: 13px; color: var(--text-mid); transition: color 0.2s; }
     .nav-links a:hover { color: var(--espresso); }
@@ -165,7 +166,7 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Marius Sebastian Chivu</a>
+      <a href="index.html" class="nav-logo"><img src="logo_1.png" alt="Logo">Marius Sebastian Chivu</a>
       <div class="nav-links">
         <a href="despre.html">Despre mine</a>
         <a href="servicii.html">Servicii</a>
