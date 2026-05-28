@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Despre mine · Psiholog Clinician</title>
   <meta name="description" content="Psiholog clinician în supervizare și psihoterapeut integrativ în formare. Background în IT. Abordare caldă, curioasă, fără judecată.">
+  <link rel="icon" type="image/png" href="logo_1.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -46,10 +47,11 @@
       border-bottom: 0.5px solid var(--border); height: 62px;
     }
     .nav-inner {
-      max-width: 1100px; margin: 0 auto; padding: 0 48px;
+      width: 100%; padding: 0 48px;
       height: 100%; display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--espresso); }
+    .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--espresso); display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a { font-size: 13px; color: var(--text-mid); transition: color 0.2s; }
     .nav-links a:hover { color: var(--espresso); }
@@ -286,7 +288,7 @@
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Marius Sebastian Chivu</a>
+      <a href="index.html" class="nav-logo"><img src="logo_1.png" alt="Logo">Marius Sebastian Chivu</a>
       <div class="nav-links">
         <a href="despre.html" class="active">Despre mine</a>
         <a href="servicii.html">Servicii</a>
