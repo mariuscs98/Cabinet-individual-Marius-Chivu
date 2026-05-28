@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicii · Psiholog Clinician</title>
+  <meta name="description" content="Evaluare psihologică, evaluare vocațională, terapie individuală, terapie de cuplu și terapie pentru copii și adolescenți. Cabinet, la domiciliu și online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --espresso:   #2c2018;
+      --espresso-d: #1e1510;
+      --amber:      #7a5c3a;
+      --amber-l:    #c4a882;
+      --sage:       #5a7a50;
+      --sage-l:     #a0b890;
+      --sage-pale:  #e4edd8;
+      --rose:       #b87870;
+      --rose-pale:  #f5e8e6;
+      --warm-pale:  #ede5da;
+      --bg:         #f8f5f1;
+      --bg-off:     #fdfaf7;
+      --border:     #e4dbd0;
+      --border-l:   #ddd6cc;
+      --text-dark:  #2c2018;
+      --text-mid:   #6b5848;
+      --text-muted: #9a8a78;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text-dark); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248,245,241,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      height: 62px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 48px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--espresso); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { font-size: 13px; color: var(--text-mid); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--espresso); }
+    .nav-links a.active { font-weight: 500; }
+    .nav-cta {
+      background: var(--sage) !important; color: var(--bg) !important;
+      font-size: 12px !important; padding: 9px 20px; border-radius: 24px;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: #4a6840 !important; transform: translateY(-1px); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--espresso); transition: all 0.3s; }
+    .nav-mobile {
+      display: none; flex-direction: column;
+      background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 8px 0 16px;
+    }
+    .nav-mobile a { padding: 12px 24px; font-size: 14px; color: var(--text-mid); border-bottom: 0.5px solid var(--border-l); }
+    .nav-mobile .nav-cta { margin: 12px 24px 0; text-align: center; padding: 12px !important; border-radius: 24px; font-size: 13px !important; }
+    .nav-mobile.open { display: flex; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-inner { padding: 0 24px; }
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 72px 0 56px;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg-off);
+    }
+    .page-hero .eyebrow {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--sage); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .page-hero .eyebrow::before {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--sage-l);
+    }
+    .page-hero h1 {
+      font-family: var(--serif); font-size: clamp(36px, 5vw, 52px);
+      font-weight: 500; color: var(--espresso); line-height: 1.1; margin-bottom: 16px;
+    }
+    .page-hero p { font-size: 15px; color: var(--text-mid); line-height: 1.75; max-width: 560px; }
+
+    /* FORMAT BADGES */
+    .format-badges { display: flex; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
+    .format-badge {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--text-mid);
+      background: var(--bg); border: 0.5px solid var(--border-l);
+      padding: 6px 14px; border-radius: 20px;
+    }
+    .format-badge .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* SERVICES SECTION */
+    .services-section { padding: 80px 0; }
+
+    .category-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-muted); margin-bottom: 24px; padding-bottom: 12px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    /* SERVICE CARD */
+    .service-card {
+      background: var(--bg-off);
+      border: 0.5px solid var(--border-l);
+      border-radius: 16px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .service-card:hover { border-color: var(--amber-l); }
+    .service-card.open { border-color: var(--sage-l); }
+
+    .service-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      padding: 28px 32px;
+      cursor: pointer;
+      align-items: center;
+      user-select: none;
+    }
+
+    .service-header-left { display: flex; flex-direction: column; gap: 8px; }
+
+    .service-meta {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .service-icon-wrap {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .service-name {
+      font-family: var(--serif); font-size: 22px; font-weight: 500;
+      color: var(--espresso); line-height: 1.2;
+    }
+    .service-short {
+      font-size: 13px; color: var(--text-mid); line-height: 1.65;
+      max-width: 560px;
+    }
+
+    .service-header-right {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+      flex-shrink: 0;
+    }
+    .price-tag {
+      font-family: var(--serif); font-size: 20px; font-weight: 500;
+      color: var(--espresso); white-space: nowrap;
+    }
+    .price-sub { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+
+    .read-more-btn {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--sage);
+      border-bottom: 1px solid var(--sage-l); padding-bottom: 2px;
+      transition: gap 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .read-more-btn .arrow {
+      display: inline-block; transition: transform 0.3s ease;
+      font-style: normal;
+    }
+    .service-card.open .read-more-btn .arrow { transform: rotate(90deg); }
+    .service-card.open .read-more-btn { color: var(--amber); border-color: var(--amber-l); }
+
+    /* EXPANDED CONTENT */
+    .service-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .service-body.open { max-height: 800px; }
+
+    .service-body-inner {
+      padding: 0 32px 32px;
+      border-top: 0.5px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .body-col h4 {
+      font-family: var(--serif); font-size: 17px; font-weight: 500;
+      color: var(--espresso); margin-bottom: 12px; margin-top: 24px;
+    }
+    .body-col p {
+      font-size: 13px; color: var(--text-mid); line-height: 1.8;
+    }
+    .body-col ul {
+      list-style: none; display: flex; flex-direction: column; gap: 7px; margin-top: 4px;
+    }
+    .body-col ul li {
+      font-size: 13px; color: var(--text-mid); line-height: 1.65;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .body-col ul li::before {
+      content: ''; display: block; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--sage-l);
+      margin-top: 8px; flex-shrink: 0;
+    }
+
+    .detail-box {
+      background: var(--bg); border: 0.5px solid var(--border-l);
+      border-radius: 12px; padding: 20px 22px; margin-top: 24px;
+    }
+    .detail-box-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 0.5px solid var(--border-l);
+    }
+    .detail-box-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .detail-box-row:first-child { padding-top: 0; }
+    .detail-label { font-size: 12px; color: var(--text-muted); }
+    .detail-value { font-size: 12px; font-weight: 500; color: var(--espresso); text-align: right; }
+
+    .cta-row { display: flex; gap: 12px; align-items: center; margin-top: 28px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--sage); color: var(--bg); font-size: 12px;
+      padding: 11px 22px; border-radius: 24px;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-primary:hover { background: #4a6840; transform: translateY(-1px); }
+    .btn-ghost {
+      font-size: 12px; color: var(--amber);
+      border-bottom: 1px solid var(--amber-l); padding-bottom: 2px;
+    }
+
+    /* DIVIDER between categories */
+    .category-block { margin-bottom: 56px; }
+    .category-block:last-child { margin-bottom: 0; }
+
+    /* NOTE */
+    .note-band {
+      background: var(--espresso); padding: 48px 0;
+    }
+    .note-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 48px;
+      display: flex; gap: 48px; align-items: center;
+    }
+    .note-icon { font-size: 32px; flex-shrink: 0; }
+    .note-text h3 {
+      font-family: var(--serif); font-size: 22px; font-weight: 500;
+      color: #f0e8dc; margin-bottom: 8px;
+    }
+    .note-text p { font-size: 13px; color: rgba(240,232,220,0.6); line-height: 1.75; }
+    .note-cta {
+      margin-left: auto; flex-shrink: 0;
+      background: var(--sage); color: var(--bg);
+      font-size: 13px; padding: 12px 24px; border-radius: 24px;
+      transition: background 0.2s;
+    }
+    .note-cta:hover { background: #4a6840; }
+    @media (max-width: 768px) {
+      .note-inner { flex-direction: column; padding: 0 24px; gap: 20px; }
+      .note-cta { margin-left: 0; }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* FOOTER */
+    footer { background: var(--espresso-d); padding: 24px 0; border-top: 0.5px solid rgba(255,255,255,0.05); }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 48px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 11px; color: rgba(248,245,241,0.3); line-height: 1.6; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 11px; color: rgba(248,245,241,0.25); transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(248,245,241,0.5); }
+
+    @media (max-width: 768px) {
+      .service-header { grid-template-columns: 1fr; gap: 16px; padding: 22px 20px; }
+      .service-header-right { align-items: flex-start; flex-direction: row; justify-content: space-between; align-items: center; }
+      .service-body-inner { grid-template-columns: 1fr; gap: 0; padding: 0 20px 24px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Marius Sebastian Chivu</a>
+      <div class="nav-links">
+        <a href="despre.html">Despre mine</a>
+        <a href="servicii.html" class="active">Servicii</a>
+       <!--  <a href="blog.html">Blog</a> -->
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta">Programează</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="despre.html">Despre mine</a>
+      <a href="servicii.html">Servicii</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Programează</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container reveal">
+      <div class="eyebrow">Servicii</div>
+      <h1>Cum te pot ajuta</h1>
+      <p>Oferă o gamă de servicii psihologice adaptate nevoilor tale, fie că ești la început de drum, treci printr-o perioadă dificilă sau vrei pur și simplu să te cunoști mai bine.</p>
+      <div class="format-badges">
+        <span class="format-badge">
+          <span class="dot" style="background: var(--sage);"></span>
+          Față în față · Timișoara, la cabinet sau la domiciliu
+        </span>
+        <span class="format-badge">
+          <span class="dot" style="background: var(--amber);"></span>
+          Online · Video
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+
+      <!-- CATEGORIE: EVALUARE -->
+      <div class="category-block reveal">
+        <div class="category-label">Evaluare</div>
+
+        <!-- Evaluare psihologică -->
+        <div class="service-card" id="card-1">
+          <div class="service-header" onclick="toggleCard('card-1')">
+            <div class="service-header-left">
+              <div class="service-meta">
+                <div class="service-icon-wrap" style="background: var(--sage-pale);">🧠</div>
+                <h2 class="service-name">Evaluare psihologică</h2>
+              </div>
+              <p class="service-short">
+                O privire clară asupra resurselor, dificultăților și tiparelor tale. Utilă atât pentru autocunoaștere, cât și ca punct de plecare pentru un proces terapeutic.
+              </p>
+            </div>
+            <div class="service-header-right">
+              <div>
+                <div class="price-tag">200 lei</div>
+                <div class="price-sub">per ședință de evaluare</div>
+              </div>
+              <span class="read-more-btn">
+                Citește mai mult <span class="arrow">→</span>
+              </span>
+            </div>
+          </div>
+          <div class="service-body" id="body-card-1">
+            <div class="service-body-inner">
+              <div class="body-col">
+                <h4>Ce presupune</h4>
+                <p>Evaluarea psihologică este un proces structurat prin care înțelegem împreună tabloul tău psihologic actual: personalitate, emoții, cogniție, comportamente și relații. Nu e un test de „normal vs. anormal", ci o hartă a cine ești în acest moment.</p>
+                <h4>Când e utilă</h4>
+                <ul>
+                  <li>Te confrunți cu anxietate, depresie sau epuizare și vrei să înțelegi ce se întâmplă</li>
+                  <li>Ai nevoie de un raport psihologic (angajare, aviz, dosar medical)</li>
+                  <li>Vrei să începi terapia cu o bază clară</li>
+                  <li>Ești curios/ă despre tine și vrei o perspectivă obiectivă</li>
+                </ul>
+              </div>
+              <div class="body-col">
+                <h4>Detalii practice</h4>
+                <div class="detail-box">
+                  <div class="detail-box-row">
+                    <span class="detail-label">Durată</span>
+                    <span class="detail-value">1–2 ședințe × 60–90 min</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Format</span>
+                    <span class="detail-value">Față în față, la cabinet sau la domiciliu · Online</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Include</span>
+                    <span class="detail-value">Raport scris + feedback</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Preț</span>
+                    <span class="detail-value">200 lei / ședință</span>
+                  </div>
+                </div>
+                <div class="cta-row">
+                  <a href="contact.html" class="btn-primary">Programează →</a>
+                  <a href="contact.html" class="btn-ghost">Întreabă-mă ceva</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evaluare vocațională -->
+        <div class="service-card" id="card-2">
+          <div class="service-header" onclick="toggleCard('card-2')">
+            <div class="service-header-left">
+              <div class="service-meta">
+                <div class="service-icon-wrap" style="background: var(--warm-pale);">🧭</div>
+                <h2 class="service-name">Evaluare vocațională</h2>
+              </div>
+              <p class="service-short">
+                Explorăm împreună valorile, abilitățile și interesele tale pentru a găsi o direcție profesională care să îți aducă sens, nu doar un salariu.
+              </p>
+            </div>
+            <div class="service-header-right">
+              <div>
+                <div class="price-tag">150 lei</div>
+                <div class="price-sub">per ședință</div>
+              </div>
+              <span class="read-more-btn">
+                Citește mai mult <span class="arrow">→</span>
+              </span>
+            </div>
+          </div>
+          <div class="service-body" id="body-card-2">
+            <div class="service-body-inner">
+              <div class="body-col">
+                <h4>Ce presupune</h4>
+                <p>Prin instrumente validate și conversație ghidată, descoperim ce te motivează cu adevărat, ce tip de activități îți vin natural și ce valori vrei să regăsești în munca ta. Rezultatul e o imagine mai clară a direcției potrivite pentru tine.</p>
+                <h4>Când e utilă</h4>
+                <ul>
+                  <li>Ești la o răscruce profesională și nu știi ce urmează</li>
+                  <li>Munca ta actuală nu îți mai aduce satisfacție</li>
+                  <li>Ești elev/ă sau student/ă și vrei claritate înainte de o alegere importantă</li>
+                  <li>Te gândești la o reconversie profesională</li>
+                  <li>Simți burnout și vrei să înțelegi dacă e de la job sau de altceva</li>
+                </ul>
+              </div>
+              <div class="body-col">
+                <h4>Detalii practice</h4>
+                <div class="detail-box">
+                  <div class="detail-box-row">
+                    <span class="detail-label">Durată</span>
+                    <span class="detail-value">2–3 ședințe × 50 min</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Format</span>
+                    <span class="detail-value">Față în față la cabinet · Online</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Include</span>
+                    <span class="detail-value">Testare + raport + plan</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Preț</span>
+                    <span class="detail-value">150 lei / ședință</span>
+                  </div>
+                </div>
+                <div class="cta-row">
+                  <a href="contact.html" class="btn-primary">Programează →</a>
+                  <a href="contact.html" class="btn-ghost">Întreabă-mă ceva</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORIE: TERAPIE -->
+      <div class="category-block reveal">
+        <div class="category-label">Terapie de scurtă durată</div>
+
+        <!-- Terapie individuală -->
+        <div class="service-card" id="card-3">
+          <div class="service-header" onclick="toggleCard('card-3')">
+            <div class="service-header-left">
+              <div class="service-meta">
+                <div class="service-icon-wrap" style="background: var(--sage-pale);">🌿</div>
+                <h2 class="service-name">Terapie individuală</h2>
+              </div>
+              <p class="service-short">
+                Un spațiu sigur și confidențial în care poți explora ce te apasă, ce te blochează și ce vrei să schimb.
+              </p>
+            </div>
+            <div class="service-header-right">
+              <div>
+                <div class="price-tag">150 lei</div>
+                <div class="price-sub">per ședință · 50 min</div>
+              </div>
+              <span class="read-more-btn">
+                Citește mai mult <span class="arrow">→</span>
+              </span>
+            </div>
+          </div>
+          <div class="service-body" id="body-card-3">
+            <div class="service-body-inner">
+              <div class="body-col">
+                <h4>Cum lucrez</h4>
+                <p>Abordez terapia integrativ, adică folosesc tehnici și perspective din mai multe școli terapeutice, adaptate la nevoile tale specifice. Nu există o rețetă universală. Fiecare om e diferit și procesul terapeutic se construiește împreună. Deoarece activez ca psiholog clinician, numărul de ședințe va fi limitat undeva la 6-10, și se vor baza strict pe nevoile dintr-o evaluare făcută la început.</p>
+                <h4>Teme frecvente</h4>
+                <ul>
+                  <li>Anxietate, atacuri de panică, frici</li>
+                  <li>Depresie, tristețe, lipsă de sens</li>
+                  <li>Burnout și epuizare (inclusiv în IT)</li>
+                  <li>Relații dificile, limite personale</li>
+                  <li>Stimă de sine, autocritică excesivă</li>
+                  <li>Traume, pierderi, tranziții de viață</li>
+                </ul>
+              </div>
+              <div class="body-col">
+                <h4>Detalii practice</h4>
+                <div class="detail-box">
+                  <div class="detail-box-row">
+                    <span class="detail-label">Durată ședință</span>
+                    <span class="detail-value">50 minute</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Frecvență</span>
+                    <span class="detail-value">Săptămânal (recomandat) sau din două în două săptămâni</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Format</span>
+                    <span class="detail-value">Față în față la cabinet · Online</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Include</span>
+                    <span class="detail-value">Evaluare psihologică la prima ședință</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Preț</span>
+                    <span class="detail-value">150 lei / ședință</span>
+                  </div>
+                </div>
+                <div class="cta-row">
+                  <a href="contact.html" class="btn-primary">Programează →</a>
+                  <a href="contact.html" class="btn-ghost">Întreabă-mă ceva</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terapie de cuplu -->
+        <div class="service-card" id="card-4">
+          <div class="service-header" onclick="toggleCard('card-4')">
+            <div class="service-header-left">
+              <div class="service-meta">
+                <div class="service-icon-wrap" style="background: var(--rose-pale);">🌸</div>
+                <h2 class="service-name">Terapie de cuplu</h2>
+              </div>
+              <p class="service-short">
+                Lucrăm împreună pentru a îmbunătăți comunicarea, a rezolva conflictele repetate și a reface conexiunea emoțională dintre voi.
+              </p>
+            </div>
+            <div class="service-header-right">
+              <div>
+                <div class="price-tag">200 lei</div>
+                <div class="price-sub">per ședință · 60–80 min</div>
+              </div>
+              <span class="read-more-btn" style="color: var(--rose); border-color: #d4a09a;">
+                Citește mai mult <span class="arrow">→</span>
+              </span>
+            </div>
+          </div>
+          <div class="service-body" id="body-card-4">
+            <div class="service-body-inner">
+              <div class="body-col">
+                <h4>Cum lucrez</h4>
+                <p>Ședințele de terapie de cuplu sunt un spațiu neutru și echilibra, nu iau partea nimănui. Obiectivul e să înțelegem tiparele de relație ale voastre și să construiți împreună unelte noi de comunicare și reconectare.</p>
+                <h4>Teme frecvente</h4>
+                <ul>
+                  <li>Comunicare blocată sau conflicte repetate</li>
+                  <li>Distanțare emoțională sau intimitate redusă</li>
+                  <li>Criză de relație, infidelitate, reconstruire</li>
+                  <li>Diferențe de valori sau priorități</li>
+                  <li>Tranziții (căsătorie, primul copil, divorț)</li>
+                </ul>
+              </div>
+              <div class="body-col">
+                <h4>Detalii practice</h4>
+                <div class="detail-box">
+                  <div class="detail-box-row">
+                    <span class="detail-label">Durată ședință</span>
+                    <span class="detail-value">60–80 minute</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Frecvență</span>
+                    <span class="detail-value">Săptămânal sau bilunar</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Format</span>
+                    <span class="detail-value">Față în față · Online</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Preț</span>
+                    <span class="detail-value">200 lei / ședință</span>
+                  </div>
+                </div>
+                <div class="cta-row">
+                  <a href="contact.html" class="btn-primary" style="background: var(--rose);">Programează →</a>
+                  <a href="contact.html" class="btn-ghost">Întreabă-mă ceva</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copii & adolescenți -->
+        <div class="service-card" id="card-5">
+          <div class="service-header" onclick="toggleCard('card-5')">
+            <div class="service-header-left">
+              <div class="service-meta">
+                <div class="service-icon-wrap" style="background: var(--warm-pale);">🦋</div>
+                <h2 class="service-name">Adolescenți</h2>
+              </div>
+              <p class="service-short">
+                Sprijin psihologic adaptat vârstei, cu implicarea activă a familiei acolo unde e nevoie.
+              </p>
+            </div>
+            <div class="service-header-right">
+              <div>
+                <div class="price-tag">150 lei</div>
+                <div class="price-sub">per ședință · 50 min</div>
+              </div>
+              <span class="read-more-btn" style="color: var(--amber); border-color: var(--amber-l);">
+                Citește mai mult <span class="arrow">→</span>
+              </span>
+            </div>
+          </div>
+          <div class="service-body" id="body-card-5">
+            <div class="service-body-inner">
+              <div class="body-col">
+                <h4>Cum lucrez</h4>
+                <p>Lucrez cu adolescenți folosind tehnici adaptate vârstei: joc terapeutic, desen, narativă și conversație. Părinții sunt implicați în proces în mod echilibrat: informați, dar fără a viola spațiul de încredere al adolescentului.</p>
+                <h4>Teme frecvente</h4>
+                <ul>
+                  <li>Anxietate școlară, frici, coșmaruri</li>
+                  <li>Dificultăți de atenție sau comportament</li>
+                  <li>Bullying, izolare socială</li>
+                  <li>Tranzițiile adolescenței, identitate</li>
+                  <li>Divorțul părinților, doliu, schimbări majore</li>
+                  <li>Depresie și stimă de sine scăzută</li>
+                </ul>
+              </div>
+              <div class="body-col">
+                <h4>Detalii practice</h4>
+                <div class="detail-box">
+                  <div class="detail-box-row">
+                    <span class="detail-label">Vârstă</span>
+                    <span class="detail-value">11-18 ani</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Durată ședință</span>
+                    <span class="detail-value">50 minute</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Format</span>
+                    <span class="detail-value">Față în față</span>
+                  </div>
+                  <div class="detail-box-row">
+                    <span class="detail-label">Preț</span>
+                    <span class="detail-value">150 lei / ședință</span>
+                  </div>
+                </div>
+                <div class="cta-row">
+                  <a href="contact.html" class="btn-primary" style="background: var(--amber);">Programează →</a>
+                  <a href="contact.html" class="btn-ghost">Întreabă-mă ceva</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOTE BAND -->
+  <div class="note-band">
+    <div class="note-inner">
+      <div class="note-icon">💬</div>
+      <div class="note-text">
+        <h3>Nu ești sigur/ă ce serviciu ți se potrivește?</h3>
+        <p>Scrie-mi un mesaj scurt și stabilim împreună ce ar fi cel mai potrivit pentru tine. Această discuție nu te costă nimic.</p>
+      </div>
+      <a href="contact.html" class="note-cta">Contactează-mă →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">
+        © 2026 Marius Sebastian Chivu · Psiholog clinician atestat CPR<br>
+        Colegiul Psihologilor din România
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleCard(id) {
+      const card = document.getElementById(id);
+      const body = document.getElementById('body-' + id);
+      const isOpen = card.classList.contains('open');
+      card.classList.toggle('open', !isOpen);
+      body.classList.toggle('open', !isOpen);
+    }
+
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMobile.classList.remove('open')));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 100); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

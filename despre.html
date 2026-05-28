@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Despre mine · Psiholog Clinician</title>
+  <meta name="description" content="Psiholog clinician în supervizare și psihoterapeut integrativ în formare. Background în IT. Abordare caldă, curioasă, fără judecată.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --espresso:   #2c2018;
+      --espresso-d: #1e1510;
+      --amber:      #7a5c3a;
+      --amber-l:    #c4a882;
+      --sage:       #5a7a50;
+      --sage-l:     #a0b890;
+      --sage-pale:  #e4edd8;
+      --rose:       #b87870;
+      --rose-pale:  #f5e8e6;
+      --warm-pale:  #ede5da;
+      --bg:         #f8f5f1;
+      --bg-off:     #fdfaf7;
+      --border:     #e4dbd0;
+      --border-l:   #ddd6cc;
+      --text-dark:  #2c2018;
+      --text-mid:   #6b5848;
+      --text-muted: #9a8a78;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text-dark); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248,245,241,0.92); backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border); height: 62px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 48px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--espresso); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { font-size: 13px; color: var(--text-mid); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--espresso); }
+    .nav-links a.active { color: var(--espresso); font-weight: 500; }
+    .nav-cta {
+      background: var(--sage) !important; color: var(--bg) !important;
+      font-size: 12px !important; padding: 9px 20px; border-radius: 24px;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: #4a6840 !important; transform: translateY(-1px); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--espresso); }
+    .nav-mobile {
+      display: none; flex-direction: column;
+      background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 8px 0 16px;
+    }
+    .nav-mobile a { padding: 12px 24px; font-size: 14px; color: var(--text-mid); border-bottom: 0.5px solid var(--border-l); }
+    .nav-mobile .nav-cta { margin: 12px 24px 0; text-align: center; padding: 12px !important; border-radius: 24px; font-size: 13px !important; }
+    .nav-mobile.open { display: flex; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-inner { padding: 0 24px; }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* HERO ABOUT */
+    .about-hero {
+      display: grid; grid-template-columns: 1fr 400px;
+      min-height: 480px; border-bottom: 0.5px solid var(--border);
+    }
+    .about-hero-content {
+      padding: 80px 56px 80px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+      animation: fadeUp 0.8s ease both;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .eyebrow {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--sage); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--sage-l); }
+
+    .about-hero h1 {
+      font-family: var(--serif); font-size: clamp(36px, 4.5vw, 50px);
+      font-weight: 500; color: var(--espresso); line-height: 1.1; margin-bottom: 20px;
+    }
+    .about-hero-lead {
+      font-size: 15px; color: var(--text-mid); line-height: 1.8;
+      max-width: 480px; margin-bottom: 28px;
+    }
+    .credentials {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .credential {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--text-mid);
+    }
+    .credential-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sage-l); flex-shrink: 0;
+    }
+    .about-hero-image {
+      background: #dde5d8; position: relative; overflow: hidden;
+    }
+    .about-hero-image-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    .figure-placeholder {
+      width: 180px; height: 360px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 90px 90px 20px 20px;
+    }
+
+    @media (max-width: 900px) {
+      .about-hero { grid-template-columns: 1fr; }
+      .about-hero-image { height: 260px; order: -1; }
+      .about-hero-content { padding: 40px 24px; }
+    }
+
+    /* STORY SECTION */
+    .story { padding: 88px 0; border-bottom: 0.5px solid var(--border); background: var(--bg-off); }
+    .story-grid { display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start; }
+    .story-sidebar { position: sticky; top: 80px; }
+    .story-sidebar h2 {
+      font-family: var(--serif); font-size: 32px; font-weight: 500;
+      color: var(--espresso); line-height: 1.2; margin-bottom: 16px;
+    }
+    .story-sidebar p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+    .story-content { display: flex; flex-direction: column; gap: 40px; }
+    .story-block {}
+    .story-block p {
+      font-size: 15px; color: var(--text-mid); line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .story-block p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 768px) {
+      .story-grid { grid-template-columns: 1fr; gap: 32px; }
+      .story-sidebar { position: static; }
+    }
+
+    /* HIGHLIGHT BLOCKS */
+    .highlight-block {
+      border-left: 2px solid var(--sage-l);
+      padding: 16px 20px;
+      background: var(--bg);
+      border-radius: 0 10px 10px 0;
+      margin: 8px 0;
+    }
+    .highlight-block p {
+      font-family: var(--serif); font-size: 18px; font-style: italic;
+      color: var(--espresso); line-height: 1.55; margin: 0 !important;
+    }
+
+    /* IT SECTION */
+    .it-section {
+      padding: 88px 0; border-bottom: 0.5px solid var(--border);
+    }
+    .it-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .it-text h2 {
+      font-family: var(--serif); font-size: 36px; font-weight: 500;
+      color: var(--espresso); line-height: 1.15; margin-bottom: 16px;
+    }
+    .it-text p { font-size: 14px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+    .it-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .it-pill {
+      font-size: 12px; padding: 5px 12px; border-radius: 12px;
+      background: var(--warm-pale); color: var(--amber);
+    }
+    .it-visual {
+      background: var(--bg-off); border: 0.5px solid var(--border-l);
+      border-radius: 16px; padding: 32px;
+    }
+    .it-visual-row {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 0; border-bottom: 0.5px solid var(--border-l);
+    }
+    .it-visual-row:first-child { padding-top: 0; }
+    .it-visual-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .it-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--warm-pale); display: flex; align-items: center;
+      justify-content: center; font-size: 18px; flex-shrink: 0;
+    }
+    .it-row-text h4 { font-size: 13px; font-weight: 500; color: var(--espresso); margin-bottom: 3px; }
+    .it-row-text p { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .it-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* VALUES / FAITH SECTION */
+    .values-section {
+      padding: 88px 0; border-bottom: 0.5px solid var(--border);
+      background: var(--bg-off);
+    }
+    .values-header { margin-bottom: 48px; }
+    .values-header h2 {
+      font-family: var(--serif); font-size: 36px; font-weight: 500;
+      color: var(--espresso); line-height: 1.15; margin-top: 8px;
+    }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .value-card {
+      background: var(--bg); border: 0.5px solid var(--border-l);
+      border-radius: 14px; padding: 28px 24px;
+    }
+    .value-icon { font-size: 24px; margin-bottom: 14px; }
+    .value-card h3 {
+      font-family: var(--serif); font-size: 20px; font-weight: 500;
+      color: var(--espresso); margin-bottom: 10px;
+    }
+    .value-card p { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+
+    .faith-block {
+      margin-top: 40px;
+      background: var(--bg);
+      border: 0.5px solid var(--border-l);
+      border-radius: 14px;
+      padding: 32px 36px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .faith-icon { font-size: 32px; }
+    .faith-text h3 {
+      font-family: var(--serif); font-size: 22px; font-weight: 500;
+      color: var(--espresso); margin-bottom: 10px;
+    }
+    .faith-text p { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .faith-block { grid-template-columns: 1fr; }
+    }
+
+    /* CTA BAND */
+    .cta-band { background: var(--espresso); padding: 72px 0; text-align: center; }
+    .cta-band h2 {
+      font-family: var(--serif); font-size: 36px; font-weight: 500;
+      color: #f0e8dc; margin-bottom: 14px; line-height: 1.2;
+    }
+    .cta-band p { font-size: 14px; color: rgba(240,232,220,0.55); line-height: 1.75; margin-bottom: 28px; }
+    .btn-primary {
+      background: var(--sage); color: var(--bg); font-size: 13px;
+      padding: 13px 28px; border-radius: 28px;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-primary:hover { background: #4a6840; transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: var(--espresso-d); padding: 24px 0; }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 48px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 11px; color: rgba(248,245,241,0.3); line-height: 1.6; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 11px; color: rgba(248,245,241,0.25); }
+    @media (max-width: 480px) { .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Marius Sebastian Chivu</a>
+      <div class="nav-links">
+        <a href="despre.html" class="active">Despre mine</a>
+        <a href="servicii.html">Servicii</a>
+       <!-- <a href="blog.html">Blog</a>-->
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta">Programează</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="despre.html">Despre mine</a>
+      <a href="servicii.html">Servicii</a>
+    <!--  <a href="blog.html">Blog</a> -->
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Programează</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <div class="eyebrow">Despre mine</div>
+      <h1>Bună, sunt<br>Marius.</h1>
+      <p class="about-hero-lead">
+        Psiholog clinician în supervizare și psihoterapeut integrativ în formare.
+        Lucrez cu oameni care vor să se înțeleagă mai bine, cu răbdare, curiozitate și fără judecată.
+      </p>
+      <div class="credentials">
+        <div class="credential">
+          <div class="credential-dot"></div>
+          Psiholog clinician în supervizare · CPR
+        </div>
+        <div class="credential">
+          <div class="credential-dot"></div>
+          Psihoterapeut integrativ în formare
+        </div>
+        <div class="credential">
+          <div class="credential-dot" style="background: var(--amber-l);"></div>
+          Background în informatică
+        </div>
+      </div>
+    </div>
+    <div class="about-hero-image">
+      <div class="about-hero-image-inner">
+        <div class="figure-placeholder"></div>
+        <!-- Înlocuiește cu: <img src="poza-despre.jpg" alt="[Prenume Nume]" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- POVESTEA MEA -->
+  <section class="story">
+    <div class="container">
+      <div class="story-grid reveal">
+        <div class="story-sidebar">
+          <h2>Povestea mea</h2>
+          <p>Cine sunt dincolo de titluri și diplome.</p>
+        </div>
+        <div class="story-content">
+          <div class="story-block">
+            <p>
+              Am ajuns în psihologie printr-un drum neliniar — și cred că tocmai de aceea înțeleg atât de bine sentimentul de „nu sunt sigur/ă unde merg." Am studiat informatica, am lucrat în IT, am cunoscut presiunea deadline-urilor, sindromul impostorului și oboseala care nu dispare după weekend.
+            </p>
+            <p>
+              La un moment dat am realizat că ceea ce mă interesa cu adevărat nu era codul — era omul din spatele lui. Cum gândim, cum simțim, de ce repetăm aceleași tipare chiar când știm că nu ne fac bine.
+            </p>
+            <div class="highlight-block">
+              <p>„Psihologia nu mi-a răspuns la toate întrebările. Dar m-a învățat să le pun mai bine."</p>
+            </div>
+          </div>
+          <div class="story-block">
+            <p>
+              Astăzi sunt psiholog clinician în supervizare și psihoterapeut integrativ în formare. Asta înseamnă că lucrez sub îndrumarea unui supervizor cu experiență — o garanție în plus a calității procesului terapeutic — și că mă formez continuu într-o abordare care îmbină mai multe școli terapeutice, adaptată la fiecare persoană în parte.
+            </p>
+            <p>
+              Lucrez cu adulți, cupluri și copii. Unii vin cu anxietate sau depresie. Alții cu întrebări despre cine sunt sau ce vor de la viață. Alții pur și simplu cu oboseala de a duce totul singuri.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IT SECTION -->
+  <section class="it-section">
+    <div class="container">
+      <div class="it-inner reveal">
+        <div class="it-text">
+          <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--amber); display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+            <span style="display:block; width:28px; height:1px; background:var(--amber-l);"></span>
+            Înțeleg lumea ta
+          </span>
+          <h2>Am lucrat în IT.<br>Știu cum arată pe dinăuntru.</h2>
+          <p>
+            Presiunea constantă, cultura „always on", imposter syndrome-ul, burnout-ul mascat în productivitate — le-am trăit, nu doar le-am citit în cărți.
+          </p>
+          <p>
+            Dacă lucrezi în tech și simți că e greu să explici cuiva din afară exact ce te apasă, eu nu voi fi acel cineva. Înțeleg contextul, înțeleg limbajul și nu voi judeca.
+          </p>
+          <div class="it-pills">
+            <span class="it-pill">Burnout în IT</span>
+            <span class="it-pill">Imposter syndrome</span>
+            <span class="it-pill">Work-life balance</span>
+            <span class="it-pill">Anxietate de performanță</span>
+            <span class="it-pill">Reconversie profesională</span>
+          </div>
+        </div>
+        <div class="it-visual">
+          <div class="it-visual-row">
+            <div class="it-icon">💻</div>
+            <div class="it-row-text">
+              <h4>Înțeleg cultura tech</h4>
+              <p>Deadline-uri imposibile, sprint-uri, code reviews, întâlniri nesfârșite — nu trebuie să traduci.</p>
+            </div>
+          </div>
+          <div class="it-visual-row">
+            <div class="it-icon">🧩</div>
+            <div class="it-row-text">
+              <h4>Gândesc sistemic</h4>
+              <p>Backgroundul tehnic îmi permite să văd tipare și conexiuni — util și în procesul terapeutic.</p>
+            </div>
+          </div>
+          <div class="it-visual-row">
+            <div class="it-icon">🔋</div>
+            <div class="it-row-text">
+              <h4>Am trăit burnout-ul</h4>
+              <p>Nu din cărți. Știu cum arată când funcționezi pe pilot automat și nu mai simți nimic.</p>
+            </div>
+          </div>
+          <div class="it-visual-row">
+            <div class="it-icon">🛤️</div>
+            <div class="it-row-text">
+              <h4>Am schimbat direcția</h4>
+              <p>Am trecut prin procesul de reconversie. Știu cât de descurajant și totodată eliberator poate fi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORI & CREDINȚĂ -->
+  <section class="values-section">
+    <div class="container">
+      <div class="values-header reveal">
+        <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted);">Cum lucrez</span>
+        <h2>Valori & abordare</h2>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-card">
+          <div class="value-icon">🌿</div>
+          <h3>Fără judecată</h3>
+          <p>Ceea ce aduci în cabinet rămâne acolo, tratat cu respect și deschidere — indiferent de ce este.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔍</div>
+          <h3>Curiozitate</h3>
+          <p>Nu caut să confirm teorii, ci să înțeleg. Fiecare om e unic și procesul terapeutic se construiește în jurul lui.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌱</div>
+          <h3>Ritm propriu</h3>
+          <p>Schimbarea autentică nu se grăbește. Lucrăm în ritmul tău, fără presiune și fără așteptări nerealiste.</p>
+        </div>
+      </div>
+
+      <!-- CREDINȚA -->
+      <div class="faith-block reveal">
+        <div class="faith-icon">✝️</div>
+        <div class="faith-text">
+          <h3>Credința ca parte din cine sunt</h3>
+          <p>
+            Sunt creștin practicant și credința face parte integrantă din viața și valorile mele. În cabinet, nu o impun și nu o propun — dar nici nu o ascund. Dacă pentru tine dimensiunea spirituală a vieții e importantă, o putem integra firesc în procesul nostru de lucru. Dacă nu, lucrăm fără ea. Respect deplin pentru orice cale alegi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <h2>Vrei să lucrăm împreună?</h2>
+      <p>Primul pas e un mesaj scurt. Nu trebuie să știi exact ce vrei să spui.</p>
+      <a href="contact.html" class="btn-primary">Contactează-mă →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">
+        © 2025 [Numele Tău] · Psiholog clinician atestat CPR<br>
+        Colegiul Psihologilor din România
+      </div>
+      <div class="footer-links">
+        <a href="#">Politică de confidențialitate</a>
+        <a href="#">GDPR</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMobile.classList.remove('open')));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 100); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
