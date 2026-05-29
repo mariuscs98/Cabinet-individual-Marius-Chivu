@@ -203,6 +203,29 @@
 
   <nav>
     <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo_1.png" alt="Logo">Marius Sebastian Chivu</a>
+      <div class="nav-links">
+        <a href="despre.html" class="active">Despre mine</a>
+        <a href="servicii.html">Servicii</a>
+       <!-- <a href="blog.html">Blog</a>-->
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta">Programează</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="despre.html">Despre mine</a>
+      <a href="servicii.html">Servicii</a>
+    <!--  <a href="blog.html">Blog</a> -->
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Programează</a>
+    </div>
+  </nav>
+  <!--
+  <nav>
+    <div class="nav-inner">
       <a href="index.html" class="nav-logo">Marius Chivu</a>
       <div class="nav-links">
         <a href="despre.html">Despre mine</a>
@@ -218,7 +241,7 @@
       <a href="contact.html">Contact</a>
       <a href="contact.html" class="nav-cta">Programează</a>
     </div>
-  </nav>
+  </nav> -->
 
   <main class="contact-main">
 
@@ -235,7 +258,7 @@
           <div class="detail-icon">📞</div>
           <div class="detail-body">
             <div class="detail-label">Telefon</div>
-            <div class="detail-value">+40 7xx xxx xxx</div>
+            <div class="detail-value">+40 739 774 396</div>
             <div class="detail-sub">Luni–Vineri, 11:00–20:00</div>
             <div class="detail-sub">Sâmbătă, 11:00–16:00</div>
           </div>
@@ -297,40 +320,10 @@
           <input type="tel" id="telefon" name="telefon" placeholder="+40 7xx xxx xxx">
         </div>
 
-        <div class="form-group">
-          <label for="serviciu">Mă interesează</label>
-          <select id="serviciu" name="serviciu">
-            <option value="" disabled selected>Alege un serviciu...</option>
-            <option value="evaluare-psiho">Evaluare psihologică</option>
-            <option value="evaluare-voc">Evaluare vocațională</option>
-            <option value="terapie-ind">Terapie individuală</option>
-            <option value="terapie-cuplu">Terapie de cuplu</option>
-            <option value="copii">Copii & adolescenți</option>
-            <option value="nesigur">Nu știu încă</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="format">Format preferat</label>
-          <select id="format" name="format">
-            <option value="" disabled selected>Față în față sau online?</option>
-            <option value="fata">Față în față — cabinet București</option>
-            <option value="online">Online, video</option>
-            <option value="oricare">Oricare variantă</option>
-          </select>
-        </div>
 
         <div class="form-group">
           <label for="mesaj">Mesaj (opțional)</label>
           <textarea id="mesaj" name="mesaj" placeholder="Spune-mi pe scurt cu ce te pot ajuta sau ce întrebări ai. Nu trebuie să fie detaliat."></textarea>
-        </div>
-
-        <div class="form-check">
-          <input type="checkbox" id="gdpr" name="gdpr" required>
-          <label for="gdpr">
-            Sunt de acord cu prelucrarea datelor mele personale conform
-            <a href="#">Politicii de confidențialitate</a>. *
-          </label>
         </div>
 
         <button type="submit" class="submit-btn" id="submit-btn">
@@ -383,7 +376,7 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-copy">© 2026 Marius Chivu · Psiholog clinician atestat CPR<br>Colegiul Psihologilor din România</div>
+      <div class="footer-copy">© 2026 Marius Sebastian Chivu · Psiholog clinician atestat CPR<br>Colegiul Psihologilor din România</div>
     </div>
   </footer>
 
@@ -428,6 +421,36 @@
     document.getElementById('gdpr').addEventListener('change', function() {
       this.style.outline = '';
     });
+
+     (function() {
+    emailjs.init("wo4notkc38_aSeWih"); // <- de la EmailJS
+  })();
+
+
+    
+    function handleSubmit(event) {
+  event.preventDefault();
+
+  const form = event.target;
+
+  const data = {
+    nume: form.nume.value,
+    email: form.email.value,
+    telefon: form.telefon.value,
+    mesaj: form.mesaj.value
+  };
+
+  emailjs.send("service_m386646", "template_56of2ue", data)
+    .then(function(response) {
+      console.log("SUCCESS!", response.status, response.text);
+
+      document.getElementById("form-success").style.display = "block";
+      form.reset();
+    }, function(error) {
+      console.log("FAILED...", error);
+      alert("A apărut o eroare. Încearcă din nou.");
+    });
+}
   </script>
 </body>
 </html>
